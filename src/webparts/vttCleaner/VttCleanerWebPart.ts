@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import { Version, Environment, EnvironmentType } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -10,6 +10,9 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'VttCleanerWebPartStrings';
 import VTTCleaner from './components/VttCleaner';
 import { IVTTCleanerProps } from './components/IVttCleanerProps';
+import { DisplayMode } from '@microsoft/sp-core-library';
+
+
 
 export interface IVttCleanerWebPartProps {
   description: string;
@@ -18,10 +21,16 @@ export interface IVttCleanerWebPartProps {
 export default class VttCleanerWebPart extends BaseClientSideWebPart <IVttCleanerWebPartProps> {
 
   public render(): void {
+    // We detect whether we're in the workbench or not so that we can display a nice message
+    // BUG: The local workbench has a bug that reports its URL is workbencch.aspx.
+    const inWorkbench: boolean =
+      Environment.type === EnvironmentType.Local
+      || this.context.pageContext.site.serverRequestPath.indexOf("/_layouts/15/workbench.aspx")  > -1;
     const element: React.ReactElement<IVTTCleanerProps> = React.createElement(
       VTTCleaner,
       {
-        description: this.properties.description
+        editMode: this.displayMode === DisplayMode.Edit,
+        localWorkbench: inWorkbench
       }
     );
 

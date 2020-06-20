@@ -7,6 +7,8 @@ import { IVTTCleanerState } from './IVTTCleanerState';
 // Used for messages
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
 
+import * as strings from 'VttCleanerWebPartStrings';
+
 
 export default class VTTCleaner extends React.Component<IVTTCleanerProps, IVTTCleanerState> {
   private fileBrowser: HTMLDivElement = undefined;
@@ -20,13 +22,18 @@ export default class VTTCleaner extends React.Component<IVTTCleanerProps, IVTTCl
   public render(): React.ReactElement<IVTTCleanerProps> {
     return (
       <div className={ styles.vttCleaner }>
-        <MessageBar
+{this.props.editMode &&
+  <MessageBar
             messageBarType={MessageBarType.warning}
-            isMultiline={false}
+            isMultiline={true}
             truncated={false}
           >
-            Drag and drop does not work in design mode.
+            { strings.EditModeWarning }<br/>
+            { this.props.localWorkbench ? strings.EditModeLocalWorkbenchWarning : strings.EditModeSharePointWarning }
           </MessageBar>
+}
+
+
          <Files
           onSuccess={this.handleSuccess}
           onError={this.handleErrors}
