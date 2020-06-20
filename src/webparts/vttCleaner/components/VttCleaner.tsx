@@ -7,21 +7,31 @@ import { IVTTCleanerState } from './IVTTCleanerState';
 // Used for messages
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
 
+import { CSVLink } from "react-csv";
+
+
 import * as strings from 'VttCleanerWebPartStrings';
 
 
 export default class VTTCleaner extends React.Component<IVTTCleanerProps, IVTTCleanerState> {
   private fileBrowser: HTMLDivElement = undefined;
+  private csvLink: CSVLink;
   /**
    *
    */
   constructor(props: IVTTCleanerProps) {
     super(props);
-    this.state = ({ files: [] });
+    this.state = ({ files: [],
+    dataToDownload: [] });
   }
   public render(): React.ReactElement<IVTTCleanerProps> {
     return (
       <div className={ styles.vttCleaner }>
+       <CSVLink data={this.state.dataToDownload}
+        ref={(r) => this.csvLink = r}
+        filename={"my-file.csv"}
+        target="_blank"
+       >Download me</CSVLink>
 {this.props.editMode &&
   <MessageBar
             messageBarType={MessageBarType.warning}
@@ -104,5 +114,26 @@ export default class VTTCleaner extends React.Component<IVTTCleanerProps, IVTTCl
       errors: []
     });
   }
+
+  private download = (_event) => {
+    // const currentRecords = this.reactTable.getResolvedState().sortedData;
+    const data_to_download = [
+      { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
+      { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
+      { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
+    ];
+    // for (var index = 0; index < currentRecords.length; index++) {
+    //    let record_to_download = {}
+    //    for(var colIndex = 0; colIndex < columns.length ; colIndex ++) {
+    //       record_to_download[columns[colIndex].Header] = currentRecords[index][columns[colIndex].accessor]
+    //    }
+    //    data_to_download.push(record_to_download)
+    // }
+    this.setState({ dataToDownload: data_to_download }, () => {
+       // click the CSVLink component to trigger the CSV download
+       this.csvLink.link.click()
+    });
+  }
+
 
 }

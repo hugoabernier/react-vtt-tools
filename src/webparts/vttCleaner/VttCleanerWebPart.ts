@@ -12,8 +12,6 @@ import VTTCleaner from './components/VttCleaner';
 import { IVTTCleanerProps } from './components/IVttCleanerProps';
 import { DisplayMode } from '@microsoft/sp-core-library';
 
-
-
 export interface IVttCleanerWebPartProps {
   description: string;
 }
