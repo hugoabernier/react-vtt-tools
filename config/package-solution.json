@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-vtt-tools-client-side-solution",
+    "id": "9cb7304b-0c3e-435b-b425-7ce88bbf5861",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-vtt-tools.sppkg"
+  }
+}
