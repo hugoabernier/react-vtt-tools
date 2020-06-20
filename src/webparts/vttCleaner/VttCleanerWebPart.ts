@@ -8,8 +8,8 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'VttCleanerWebPartStrings';
-import VttCleaner from './components/VttCleaner';
-import { IVttCleanerProps } from './components/IVttCleanerProps';
+import VTTCleaner from './components/VttCleaner';
+import { IVTTCleanerProps } from './components/IVttCleanerProps';
 
 export interface IVttCleanerWebPartProps {
   description: string;
@@ -18,8 +18,8 @@ export interface IVttCleanerWebPartProps {
 export default class VttCleanerWebPart extends BaseClientSideWebPart <IVttCleanerWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<IVttCleanerProps> = React.createElement(
-      VttCleaner,
+    const element: React.ReactElement<IVTTCleanerProps> = React.createElement(
+      VTTCleaner,
       {
         description: this.properties.description
       }

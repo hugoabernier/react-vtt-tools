@@ -1,3 +1,3 @@
-export interface IVttCleanerProps {
+export interface IVTTCleanerProps {
   description: string;
 }
