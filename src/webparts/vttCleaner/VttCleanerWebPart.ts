@@ -9,7 +9,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'VttCleanerWebPartStrings';
 import VTTCleaner from './components/VttCleaner';
-import { IVTTCleanerProps } from './components/IVttCleanerProps';
+import { IVTTCleanerProps } from './components/IVTTCleanerProps';
 import { DisplayMode } from '@microsoft/sp-core-library';
 
 export interface IVttCleanerWebPartProps {
@@ -43,25 +43,25 @@ export default class VttCleanerWebPart extends BaseClientSideWebPart <IVttCleane
     return Version.parse('1.0');
   }
 
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
-      ]
-    };
-  }
+  // protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+  //   return {
+  //     pages: [
+  //       {
+  //         header: {
+  //           description: strings.PropertyPaneDescription
+  //         },
+  //         groups: [
+  //           {
+  //             groupName: strings.BasicGroupName,
+  //             groupFields: [
+  //               PropertyPaneTextField('description', {
+  //                 label: strings.DescriptionFieldLabel
+  //               })
+  //             ]
+  //           }
+  //         ]
+  //       }
+  //     ]
+  //   };
+  // }
 }

@@ -1,5 +1,7 @@
 export interface IVTTCleanerState {
-  files: any[];
   errors?: string[];
+  file?: File;
+  exportFileName?: string;
   dataToDownload: any[];
+  readyToExport: boolean;
 }
