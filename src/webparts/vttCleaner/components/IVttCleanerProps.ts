@@ -1,3 +1,5 @@
+
 export interface IVTTCleanerProps {
-  description: string;
+  editMode: boolean;
+  localWorkbench: boolean;
 }

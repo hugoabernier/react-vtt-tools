@@ -14,4 +14,8 @@
     width: 0px;
     height:0px;
   }
+
+  .placeholder [class^='placeholderContainer_'] {
+    background-color: $ms-color-neutralLighterAlt;
+  }
 }
